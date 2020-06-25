@@ -6,7 +6,7 @@ var HttpStatus = require('http-status-codes');
 var custom_consts = require('../config/constants');
 
 router.get('/GetPruebas', (req, res) => {
-    productsController.GetPruebas(req.body)
+    pruebasController.GetPruebas(req.body)
         .then(result => {
             if (result.output.success) res.status(HttpStatus.NO_CONTENT).json({});
             else res.status(HttpStatus.BAD_REQUEST).json({ error: result.recordset[0].err});
