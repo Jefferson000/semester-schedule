@@ -91,6 +91,12 @@ var callback = function(answer) {
     session.answer(callback)
 }
 // start the query loop
-session.answer(callback)
-//console.log(results);
+const seeAnswer= async ()=>{
+    console.log('Inicia');
+    const aux = await session.answer(callback)
+    console.log('termina');
+}
+
+seeAnswer();
+console.log(results);
 module.exports = app;
