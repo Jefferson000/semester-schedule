@@ -58,3 +58,41 @@ app.use((req, res, next) => {
 app.use('/', indexRouter);
 app.use('/pruebas',pruebasRouter);
 module.exports = app;
+
+
+
+var pl = require('tau-prolog');
+var session = pl.create();
+
+session.consult(`
+    likes(sam, salad).
+    likes(dean, pie).
+    likes(sam, apples).
+    likes(dean, whiskey).
+`);
+
+session.query("likes(sam, X).");
+
+var results = [];
+
+function inform(msg) {
+    results.push(msg)
+}
+var count_answers = 0
+var callback = function(answer) {
+    if (answer === false) {
+        results.push(false);
+        return
+    }
+    if (answer === null) {
+        results = [];
+        return
+    }
+    // loop
+    ++count_answers
+    inform(pl.format_answer(answer))
+    session.answer(callback)
+}
+// start the query loop
+session.answer(callback)
+console.log(results);
