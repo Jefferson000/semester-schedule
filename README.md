@@ -1,6 +1,5 @@
-# Título del Proyecto
+# Distribución de Horarios
 
-_Distribución de horarios_
 <!--
 ## Comenzando 🚀
 
