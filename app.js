@@ -57,9 +57,6 @@ app.use((req, res, next) => {
 });
 app.use('/', indexRouter);
 app.use('/pruebas',pruebasRouter);
-module.exports = app;
-
-
 
 var pl = require('tau-prolog');
 var session = pl.create();
@@ -95,4 +92,5 @@ var callback = function(answer) {
 }
 // start the query loop
 session.answer(callback)
-console.log(results);
+//console.log(results);
+module.exports = app;
