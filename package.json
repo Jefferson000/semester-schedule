@@ -7,7 +7,7 @@
   },
   "dependencies": {
     "@hapi/hoek": "^8.5.1",
-    "angular": "^1.7.9",
+    "angular": "^1.8.0",
     "angular-messages": "^1.5.8",
     "angular-pnotify": "^0.1.2",
     "bcryptjs": "^2.4.3",
