@@ -3,7 +3,6 @@ var sqlconfig = require('../config/envconfig').database;
 var { normalize } = require('../Midleware/accentMark');
 
 exports.GetPruebas = async (req) => {
-    console.log("CONTROLLER");
     try {
         let pool = await sql.connect(sqlconfig);
         let result = await pool.request()

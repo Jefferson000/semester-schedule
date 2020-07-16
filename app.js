@@ -4,6 +4,9 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var pruebasRouter = require('./routes/pruebas');
+var professorController = require('./routes/professor');
+var classroomController = require('./routes/clasroom')
+var subjectController = require('./routes/subject')
 var xssFilter = require('x-xss-protection');
 var frameguard = require('frameguard');
 var csp = require('helmet-csp');
@@ -57,6 +60,9 @@ app.use((req, res, next) => {
 });
 app.use('/', indexRouter);
 app.use('/pruebas',pruebasRouter);
+app.use('/professor',professorController)
+app.use('/classroom',classroomController)
+app.use('/subject',subjectController)
 
 var pl = require('tau-prolog');
 var session = pl.create();
