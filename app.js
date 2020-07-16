@@ -7,6 +7,7 @@ var pruebasRouter = require('./routes/pruebas');
 var professorController = require('./routes/professor');
 var classroomController = require('./routes/clasroom')
 var subjectController = require('./routes/subject')
+var infoController = require('./routes/info');
 var xssFilter = require('x-xss-protection');
 var frameguard = require('frameguard');
 var csp = require('helmet-csp');
@@ -63,7 +64,7 @@ app.use('/pruebas',pruebasRouter);
 app.use('/professor',professorController)
 app.use('/classroom',classroomController)
 app.use('/subject',subjectController)
-
+app.use('/info',infoController)
 var pl = require('tau-prolog');
 var session = pl.create();
 
