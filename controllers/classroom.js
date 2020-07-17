@@ -44,7 +44,8 @@ exports.UpdateClassroom = async (req) => {
         let pool = await sql.connect(sqlconfig);
         let result = await pool.request()
             // .input('user', sql.VarChar(50), req.user)
-            .input('number',sql.Int, req.number)
+            .input('classroom_id', sql.Int, req.classroom_id)
+            .input('number',sql.Int,  !req.number ? null : req.number)
             .input('capacity', sql.Int,  !req.capacity ? null : req.capacity)
             .input('classroomType',sql.Int,  !req.classroomType ? null : req.classroomType)
             .output('success', sql.Bit, 0)
@@ -65,7 +66,7 @@ exports.DeleteClassroom = async (req) => {
         let pool = await sql.connect(sqlconfig);
         let result = await pool.request()
             // .input('user', sql.VarChar(50), req.user)
-            .input('number',sql.Int, req.number)
+            .input('classroom_id', sql.Int, req.classroom_id)
             .output('success', sql.Bit, 0)
             .execute('DeleteClassroom');
         sql.close();
@@ -73,6 +74,7 @@ exports.DeleteClassroom = async (req) => {
         return result;
     }
     catch (excepcion) {
+        console.log(excepcion);
         sql.close();
         throw excepcion;
     }
