@@ -30,7 +30,7 @@ exports.GetProfessors = async (req) => {
             .output('success', sql.Bit, 0)
             .execute('GetProfessors');
         sql.close();
-        console.log(result)
+        //console.log(result)
         return result;
     }
     catch (excepcion) {

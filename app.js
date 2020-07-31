@@ -8,6 +8,7 @@ var professorController = require('./routes/professor');
 var classroomController = require('./routes/clasroom')
 var subjectController = require('./routes/subject')
 var infoController = require('./routes/info');
+var consultController = require('./routes/consult')
 var xssFilter = require('x-xss-protection');
 var frameguard = require('frameguard');
 var csp = require('helmet-csp');
@@ -65,45 +66,5 @@ app.use('/professor',professorController)
 app.use('/classroom',classroomController)
 app.use('/subject',subjectController)
 app.use('/info',infoController)
-var pl = require('tau-prolog');
-var session = pl.create();
-
-session.consult(`
-    likes(sam, salad).
-    likes(dean, pie).
-    likes(sam, apples).
-    likes(dean, whiskey).
-`);
-
-session.query("likes(sam, X).");
-
-var results = [];
-
-function inform(msg) {
-    results.push(msg)
-}
-var count_answers = 0
-var callback = function(answer) {
-    if (answer === false) {
-        results.push(false);
-        return
-    }
-    if (answer === null) {
-        results = [];
-        return
-    }
-    // loop
-    ++count_answers
-    inform(pl.format_answer(answer))
-    session.answer(callback)
-}
-// start the query loop
-const seeAnswer= async ()=>{
-    console.log('Inicia');
-    const aux = await session.answer(callback)
-    console.log('termina');
-}
-
-seeAnswer();
-console.log(results);
+app.use('/consult',consultController)
 module.exports = app;
