@@ -28,7 +28,7 @@
     "mssql": "^4.3.2",
     "pify": "^3.0.0",
     "rate-limiter-flexible": "^1.1.6",
-    "redis": "^2.8.0",
+    "redis": "^3.1.1",
     "sass": "^0.5.0",
     "tau-prolog": "^0.2.81",
     "tedious": "^1.14.0",
